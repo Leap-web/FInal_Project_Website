@@ -9,28 +9,7 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <style>
-        /* Logo Styling */
-        .navbar-brand span {
-            font-size: 1.5rem;
-            color: orange;
-            font-weight: bold;
-        }
-        .navbar-brand img {
-            height: 50px; /* Larger logo */
-        }
-
-        /* Navigation Links Styling */
-        .navbar-nav .nav-link {
-            font-size: 1.2rem; /* Larger than default */
-            margin-right: 15px; /* Add spacing between items */
-        }
-
-        /* Sign In and Cart Buttons */
-        .navbar-nav .btn {
-            font-size: 1rem; /* Normal button size */
-        }
-    </style>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <!-- Navbar -->
@@ -74,5 +53,33 @@
             </div>
         </div>
     </nav>
+    <div class="container my-4">
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src="./4c91f8dd6fc6894cef9a119b0abb9f9f.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="./4c91f8dd6fc6894cef9a119b0abb9f9f.jpg" class="d-block w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src="./4c91f8dd6fc6894cef9a119b0abb9f9f.jpg" class="d-block w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+    </div>    
 </body>
 </html>
