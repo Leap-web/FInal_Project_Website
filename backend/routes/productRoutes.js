@@ -12,7 +12,7 @@ router.get('/create',productController.renderCreateForm);
 router.post('/', upload.single('image'),productController.createProduct);
 router.get('/:id', productController.getProductById); // Show product details
 router.get('/:id/edit', productController.renderEditForm); // Show edit form
-router.put('/:id', productController.updateProduct); // Update product
+router.put('/:id', upload.single('image'),productController.updateProduct); // Update product
 router.delete('/:id', productController.deleteProduct); // Delete product
 
 

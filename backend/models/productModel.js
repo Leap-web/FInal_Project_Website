@@ -17,7 +17,7 @@ class Product {
     }
 
     static async update(id, data) {
-        const result = await db.query('UPDATE products SET name = ?, price = ?, description = ?, image = ? WHERE id = ?', [data.name, data.price,data.description,"", id]);
+        const result = await db.query('UPDATE products SET name = ?, price = ?, description = ?, image = ? WHERE id = ?', [data.name, data.price,data.description,data.image, id]);
         return result;
       }
     
