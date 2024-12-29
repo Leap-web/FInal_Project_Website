@@ -1,0 +1,10 @@
+<h1>Your Tasks</h1>
+<a href="/tasks/new">Add Task</a>
+<ul>
+    <% tasks.forEach(task => { %>
+        <li>
+            <%= task.title %> - <%= task.status %> 
+            <a href="/tasks/delete/<%= task.id %>">Delete</a>
+        </li>
+    <% }) %>
+</ul>

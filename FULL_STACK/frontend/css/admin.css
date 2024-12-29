@@ -1,0 +1,35 @@
+/* Admin Dashboard Styling */
+.admin-dashboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.dashboard-sidebar {
+    width: 20%;
+    background: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+.dashboard-sidebar a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.dashboard-sidebar a:hover {
+    background-color: #575757;
+}
+
+.dashboard-content {
+    width: 75%;
+    padding: 20px;
+    background-color: #fff;
+    margin-left: 20px;
+}
+
+.dashboard-content h1 {
+    margin-top: 0;
+}
