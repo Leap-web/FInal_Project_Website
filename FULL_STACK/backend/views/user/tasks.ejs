@@ -4,20 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Tasks</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 600px;
+            margin-top: 50px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .task-item:last-child {
+            border-bottom: none;
+        }
+    </style>
 </head>
 <body>
-    <h1>Your Tasks</h1>
-    <a href="/tasks/new" class="button">Add New Task</a>
-    <ul>
-        <% tasks.forEach(task => { %>
-            <li>
-                <strong><%= task.title %></strong> - <%= task.description %> 
-                <em>Due: <%= task.due_date %></em> <!-- Display due date -->
-                <form action="/tasks/delete/<%= task.id %>" method="POST" style="display:inline;">
-                    <button type="submit">Delete</button>
-                </form>
-            </li>
-        <% }) %>
-    </ul>
+    <div class="container">
+        <h1 class="text-center">Your Tasks</h1>
+        <a href="/tasks/new" class="btn btn-primary mb-3">Add New Task</a>
+        <a href="/tasks" class="btn btn-secondary mb-3">Back</a> <!-- Back button added here -->
+        <ul class="list-group">
+            <% tasks.forEach(task => { %>
+                <li class="list-group-item task-item">
+                    <div>
+                        <strong><%= task.title %></strong> - <%= task.description %> 
+                        <em>Due: <%= task.due_date %></em> <!-- Display due date -->
+                    </div>
+                    <form action="/tasks/delete/<%= task.id %>" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -12,5 +12,5 @@ exports.getAdminDashboard = async (req, res) => {
 exports.deleteUser  = async (req, res) => {
     const { id } = req.params;
     await User.delete(id);
-    res.redirect('/admin');
+    res.redirect('/admin'); // Redirect back to the admin dashboard after deletion
 };

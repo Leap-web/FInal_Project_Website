@@ -5,12 +5,12 @@ class Task {
         const [rows] = await db.query('SELECT * FROM task WHERE user_id = ?', [userId]);
         return rows;
     }
-
+    
     static async create(data) {
         const { user_id, title, description, status } = data;
         const result = await db.query("INSERT INTO task (user_id, title, description, status) VALUES (?, ?, ?, ?)", 
             [user_id, title, description, status]);
-        return result;
+        return result; // This will return the result of the insert operation
     }
 
     static async getById(id) {

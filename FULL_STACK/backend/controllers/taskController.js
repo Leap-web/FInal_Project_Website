@@ -10,7 +10,9 @@ exports.getTasks = async (req, res) => {
 
 exports.addTask = async (req, res) => {
     const { title, description, status = 'Pending' } = req.body;
-    await Task.create({ user_id: req.session.user.id, title, description, status });
+    // Ensure user_id is taken from the session
+    const userId = req.session.user.id; 
+    await Task.create({ user_id: userId, title, description, status });
     res.redirect('/tasks');
 };
 
