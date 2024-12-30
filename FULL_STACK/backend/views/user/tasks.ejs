@@ -1,10 +1,23 @@
-<h1>Your Tasks</h1>
-<a href="/tasks/new">Add Task</a>
-<ul>
-    <% tasks.forEach(task => { %>
-        <li>
-            <%= task.title %> - <%= task.status %> 
-            <a href="/tasks/delete/<%= task.id %>">Delete</a>
-        </li>
-    <% }) %>
-</ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Tasks</title>
+</head>
+<body>
+    <h1>Your Tasks</h1>
+    <a href="/tasks/new" class="button">Add New Task</a>
+    <ul>
+        <% tasks.forEach(task => { %>
+            <li>
+                <strong><%= task.title %></strong> - <%= task.description %> 
+                <em>Due: <%= task.due_date %></em> <!-- Display due date -->
+                <form action="/tasks/delete/<%= task.id %>" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>

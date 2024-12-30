@@ -3,14 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
+    <title>Your To-Do List</title>
+    <link rel="stylesheet" href="/FULL_STACK/frontend/css/styles.css"> <!-- Link to your CSS file -->
 </head>
 <body>
-    <h1>To-Do List</h1>
-    <ul>
-        <li>Task 1</li>
-        <li>Task 2</li>
-        <li>Task 3</li>
-    </ul>
+    <header>
+        <h1>Your To-Do List</h1>
+        <nav>
+            <a href="/todolist">To-Do List</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/tasks/new" class="button">Add New Task</a> <!-- Link to add new task -->
+        </nav>
+    </header>
+    <main>
+        <h2>Add a New Task</h2>
+        <form action="/tasks" method="POST">
+            <input type="text" name="title" placeholder="Task Title" required>
+            <textarea name="description" placeholder="Task Description" required></textarea>
+            <button type="submit">Add Task</button>
+        </form>
+        <h2>Current Tasks</h2>
+        <ul>
+            <% tasks.forEach(task => { %>
+                <li>
+                    <strong><%= task.title %></strong> - <%= task.description %>
+                    <form action="/tasks/delete/<%= task.id %>" method="POST" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+    </main>
+    <footer>
+        <p>&copy; 2023 Task Manager</p>
+    </footer>
 </body>
 </html>

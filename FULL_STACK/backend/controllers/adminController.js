@@ -9,7 +9,7 @@ exports.getAdminDashboard = async (req, res) => {
     res.render('user/adminDashboard', { users });
 };
 
-exports.deleteUser = async (req, res) => {
+exports.deleteUser  = async (req, res) => {
     const { id } = req.params;
     await User.delete(id);
     res.redirect('/admin');

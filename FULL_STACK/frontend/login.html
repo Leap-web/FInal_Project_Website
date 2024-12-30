@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="/login" method="POST" class="form">
+        <form action="/FULL_STACK/backend/views/auth/login.ejs" method="POST" class="form">
             <h2>Login</h2>
             <input type="email" name="email" placeholder="Email" required>
             <input type="password" name="password" placeholder="Password" required>
@@ -17,7 +17,7 @@
                 <p class="error"><%= error %></p>
             <% } %>
         </form>
-        <a href="/register" class="link">Register</a>
+        <a href="/FULL_STACK/backend/views/auth/register.ejs" class="link">Register</a>
     </div>
 </body>
 </html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/FULL_STACK/frontend/css/styles.css">
+    <title>Task Manager</title>
+</head>
+<body>
+    <header>
+        <h1>Task Manager</h1>
+        <nav>
+            <a href="/todolist">To-Do List</a> <!-- Corrected link -->
+            <a href="/login">Login</a> <!-- Corrected link -->
+            <a href="/register">Register</a> <!-- Corrected link -->
+        </nav>
+    </header>
+    <main>
+        <%- body %> <!-- This is where the specific view will be injected -->
+    </main>
+    <footer>
+        <p>&copy; 2023 Task Manager</p>
+    </footer>
+    <div class="container">
+        <h2>Your To-Do List</h2>
+        <ul class="task-list">
+            <!-- Example static tasks, replace with dynamic content as needed -->
+            <li class="task-item">Task 1 - Description</li>
+            <li class="task-item">Task 2 - Description</li>
+            <li class="task-item">Task 3 - Description</li>
+        </ul>
+        <a href="/tasks/new" class="button">Add New Task</a> <!-- Corrected link -->
+    </div>
+</body>
+</html>
