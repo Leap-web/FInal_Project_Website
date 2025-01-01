@@ -7,9 +7,9 @@ class User {
     }
 
     static async create(data) {
-        const { name, email, password } = data;
-        const result = await db.query("INSERT INTO user (name, email, password) VALUES (?, ?, ?)", 
-            [name, email, password]);
+        const { name, email, password, role = 'user' } = data; // Default role is 'user'
+        const result = await db.query("INSERT INTO user (name, email, password, role) VALUES (?, ?, ?, ?)", 
+            [name, email, password, role]);
         return result;
     }
 

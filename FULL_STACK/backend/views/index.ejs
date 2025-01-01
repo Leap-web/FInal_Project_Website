@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Task Manager</title>
-    <link rel="stylesheet" href="/FULL_STACK/frontend/css/styles.css"> <!-- Link to your CSS file -->
+    <title>Home | Task Manager</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
+    <%- include('partials/navbar', { user: user }) %> <!-- Correct path -->
+    <section class="hero">
         <h1>Welcome to Task Manager</h1>
-        <p>Your personal task management application.</p>
-        <a href="/login" class="button">Login</a>
-        <a href="/register" class="button">Register</a>
-    </div>
+        <p>Organize your tasks efficiently and stay productive.</p>
+        <div class="cta-buttons">
+            <a href="/login" class="btn">Login</a>
+            <a href="/register" class="btn">Register</a>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2023 Task Manager. All rights reserved.</p>
+    </footer>
 </body>
 </html>

@@ -2,13 +2,12 @@ const express = require('express');
 const router = express.Router();
 const Task = require('../model/taskModel'); // Import your Task model
 
-// Route to display the To-Do List
 router.get('/todolist', async (req, res) => {
     if (!req.session.user) {
         return res.redirect('/login'); // Redirect to login if not authenticated
     }
     const tasks = await Task.getAll(req.session.user.id); // Fetch tasks for the logged-in user
-    res.render('user/tasks', { tasks }); // Render the tasks view
+    res.render('user/tasks', { user: req.session.user, tasks }); // Pass the user object
 });
 
 // Route to add a new task

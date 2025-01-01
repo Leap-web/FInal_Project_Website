@@ -3,12 +3,12 @@ const bcrypt = require('bcryptjs');
 
 exports.login = async (req, res) => {
     const { email, password } = req.body;
-    const user = await User.getByEmail(email);  
-    if (user && bcrypt.compare (password, user.password)) {
-        req.session.user = { id: user.id, email: user.email }; // Store user info in session
-        res.redirect('/todolist'); // Redirect to To-Do List after successful login
+    const user = await User.getByEmail(email);
+    if (user && bcrypt.compareSync(password, user.password)) {
+        req.session.user = { id: user.id, email: user.email }; // Set session.user
+        res.redirect('/todolist');
     } else {
-        res.render('auth/login', { error: 'Invalid email or password' }); // Show error on login failure
+        res.render('auth/login', { error: 'Invalid email or password' });
     }
 };
 
