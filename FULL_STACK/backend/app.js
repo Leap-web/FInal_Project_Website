@@ -13,10 +13,10 @@ const todolistRoutes = require('./routes/todolistRoutes');
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
-    secret: 'mysecret',
+    secret: 'your-secret-key', // Replace with a secure key
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
+    cookie: { secure: false } // Set to true if using HTTPS
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, '../frontend')));
@@ -27,6 +27,11 @@ app.use(adminRoutes);
 app.use(taskRoutes);
 app.use(userRoutes);
 app.use(todolistRoutes);
+
+app.get('/', (req, res) => {
+    const user = req.session.user; // Get user data from the session
+    res.render('index', { user }); // Pass user data to the template
+});
 
 // Set views directory
 app.set('views', path.join(__dirname, 'views'));

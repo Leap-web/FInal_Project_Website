@@ -22,7 +22,7 @@ class User {
 
     static async getByEmail(email) {
         const [rows] = await db.query('SELECT * FROM user WHERE email = ?', [email]);
-        return rows[0];
+        return rows[0]; // Return the first matching user
     }
 
     static async update(id, data) {

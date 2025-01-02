@@ -12,7 +12,7 @@
             margin: 0;
             padding: 0;
             background: linear-gradient(135deg, #333, #1a1a1a);
-            color: #fff;
+            color: cyan;
         }
         .hero {
             text-align: center;
@@ -38,14 +38,14 @@
             font-weight: 600;
             text-decoration: none;
             border-radius: 25px;
-            color: #fff;
+            color: cyan;
             transition: all 0.3s ease-in-out;
         }
         .cta-buttons a.btn-primary {
-            background: linear-gradient(to right, #e63946, #ff6b6b);
+            background: linear-gradient(to right, blue, cyan);
         }
         .cta-buttons a.btn-primary:hover {
-            background: linear-gradient(to right, #ff6b6b, #e63946);
+            background: linear-gradient(to right, cyan, blue);
             transform: translateY(-5px);
         }
         .cta-buttons a.btn-secondary {
@@ -106,8 +106,13 @@
         <h1>Welcome to Task Manager</h1>
         <p>Task Manager is your ultimate productivity tool designed to help you organize, prioritize, and conquer your daily tasks with ease.</p>
         <div class="cta-buttons">
-            <a href="/login" class="btn btn-primary">Login</a>
-            <a href="/register" class="btn btn-secondary">Register</a>
+            <% if (user) { %>
+                <a href="/logout" class="btn btn-primary">Logout</a>
+                <span style="color: cyan; font-size: 1.2rem;">Welcome, <%= user.name %></span>
+            <% } else { %>
+                <a href="/login" class="btn btn-primary">Login</a>
+                <a href="/register" class="btn btn-secondary">Register</a>
+            <% } %>
         </div>
     </section>
 
@@ -129,6 +134,7 @@
             <p>We prioritize your data security with cutting-edge encryption and backup systems.</p>
         </div>
     </section>
+
 
     <footer>
         <p>&copy; 2025 Task Manager. All rights reserved. | <a href="/about">About Us</a></p>
