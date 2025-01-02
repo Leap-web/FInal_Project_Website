@@ -6,64 +6,90 @@
     <title>Your Tasks | Task Manager</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/styles.css">
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #333, #1a1a1a);
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: #f8f9fa;
             margin: 0;
             padding: 0;
         }
         .container {
             max-width: 800px;
             margin: 50px auto;
-            padding: 20px;
-            background: white;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+            color: #00d1b2;
         }
         .task-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px;
-            border-bottom: 1px solid #ddd;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            background: #f8f9fa;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .task-item:last-child {
-            border-bottom: none;
+        .task-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
         .task-item strong {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
         }
         .task-item em {
             font-size: 0.9rem;
-            color: #6c757d;
+            color: #adb5bd;
         }
-        .btn-sm {
-            font-size: 0.8rem;
+        .btn {
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        h1 {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 30px;
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+        }
+        .add-task-btn {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
             font-weight: 600;
+            transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
         }
-        .btn-primary, .btn-secondary {
-            margin-bottom: 10px;
+        .add-task-btn:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, #0056b3, #003a75);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
         .no-tasks {
             text-align: center;
-            color: #6c757d;
+            color: #adb5bd;
             font-size: 1rem;
             margin-top: 20px;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #adb5bd;
+            font-size: 0.8rem;
         }
         @media (max-width: 576px) {
             .container {
                 margin: 20px;
                 padding: 15px;
+            }
+            h1 {
+                font-size: 2rem;
             }
             .task-item {
                 flex-direction: column;
@@ -78,30 +104,35 @@
 <body>
     <%- include('../partials/navbar', { user: user }) %> <!-- Navbar -->
     <div class="container">
-        <h1>Your Tasks</h1>
-        <a href="/tasks/new" class="btn btn-primary mb-3 w-100">Add New Task</a>
-        <a href="/tasks" class="btn btn-secondary mb-3 w-100">Back</a>
+        <h1><i class="fas fa-tasks"></i> Your Tasks</h1>
 
         <% if (tasks.length > 0) { %>
             <ul class="list-group">
-                <% tasks.forEach(task => { %>
-                    <% console.log("Task Due Date:", task.due_date); %>
+                <% tasks.forEach((task, index) => { %>
                     <li class="list-group-item task-item">
                         <div>
-                            <strong><%= task.title %></strong> 
+                            <strong><i class="fas fa-thumbtack"></i> <%= task.title %></strong> 
                             <span>- <%= task.description %></span><br>
-                            <em style="color: #333;">Due: <%= task.due_date ? new Date(task.due_date).toLocaleDateString() : 'No due date' %></em>
+                            <em>Due: <%= task.due_date ? new Date(task.due_date).toLocaleDateString() : 'No due date' %></em>
                         </div>
                         <form action="/tasks/delete/<%= task.id %>" method="POST" style="margin: 0;">
-                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i> Delete
+                            </button>
                         </form>
                     </li>
                 <% }) %>
             </ul>
         <% } else { %>
-            <p class="no-tasks">No tasks available. Click "Add New Task" to get started.</p>
+            <p class="no-tasks"><i class="fas fa-info-circle"></i> No tasks available. Click "Add New Task" to get started.</p>
         <% } %>
+        <a href="/tasks/new" class="btn btn-primary mb-3 w-100 add-task-btn"><i class="fas fa-plus"></i> Add New Task</a>
+        <a href="/tasks" class="btn btn-secondary mb-3 w-100">Back</a>
     </div>
+
+    <footer>
+        <p>Task Manager &copy; <%= new Date().getFullYear() %>. All rights reserved.</p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
